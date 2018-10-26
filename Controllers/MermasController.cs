@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class MermasController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/Mermas
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<Mermas> Get() => db.Mermas.ToList();
 
-        // GET api/Boletas/5
+        // GET api/Mermas/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public Mermas Get(int id) => db.Mermas.Find(id);
 
-        // POST api/Boletas
+        // POST api/Mermas
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(Mermas sync)
         {
-            db.Boletas.Add(sync);
+            db.Mermas.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/Mermas/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] Mermas newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.Mermas.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/Mermas/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.Mermas.Remove(db.Mermas.Find(id));
             db.SaveChanges();
         }
     }

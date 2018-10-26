@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class BodegaMovimientoController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/BodegaMovimiento
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<BodegaMovimiento> Get() => db.BodegaMovimiento.ToList();
 
-        // GET api/Boletas/5
+        // GET api/BodegaMovimiento/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public BodegaMovimiento Get(int id) => db.BodegaMovimiento.Find(id);
 
-        // POST api/Boletas
+        // POST api/BodegaMovimiento
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(BodegaMovimiento sync)
         {
-            db.Boletas.Add(sync);
+            db.BodegaMovimiento.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/BodegaMovimiento/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] BodegaMovimiento newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.BodegaMovimiento.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/BodegaMovimiento/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.BodegaMovimiento.Remove(db.BodegaMovimiento.Find(id));
             db.SaveChanges();
         }
     }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class ProductoMateriaprimaController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/ProductoMateriaprima
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<ProductoMateriaprima> Get() => db.ProductoMateriaprima.ToList();
 
-        // GET api/Boletas/5
+        // GET api/ProductoMateriaprima/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public ProductoMateriaprima Get(int id) => db.ProductoMateriaprima.Find(id);
 
-        // POST api/Boletas
+        // POST api/ProductoMateriaprima
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(ProductoMateriaprima sync)
         {
-            db.Boletas.Add(sync);
+            db.ProductoMateriaprima.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/ProductoMateriaprima/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] ProductoMateriaprima newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.ProductoMateriaprima.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/ProductoMateriaprima/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.ProductoMateriaprima.Remove(db.ProductoMateriaprima.Find(id));
             db.SaveChanges();
         }
     }

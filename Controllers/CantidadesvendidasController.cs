@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class CantidadesvendidasController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/Cantidadesvendidas
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<Cantidadesvendidas> Get() => db.Cantidadesvendidas.ToList();
 
-        // GET api/Boletas/5
+        // GET api/Cantidadesvendidas/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public Cantidadesvendidas Get(int id) => db.Cantidadesvendidas.Find(id);
 
-        // POST api/Boletas
+        // POST api/Cantidadesvendidas
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(Cantidadesvendidas sync)
         {
-            db.Boletas.Add(sync);
+            db.Cantidadesvendidas.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/Cantidadesvendidas/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] Cantidadesvendidas newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.Cantidadesvendidas.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/Cantidadesvendidas/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.Cantidadesvendidas.Remove(db.Cantidadesvendidas.Find(id));
             db.SaveChanges();
         }
     }

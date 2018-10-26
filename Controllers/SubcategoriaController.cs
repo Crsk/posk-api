@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class SubcategoriasController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/Subcategorias
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<Subcategorias> Get() => db.Subcategorias.ToList();
 
-        // GET api/Boletas/5
+        // GET api/Subcategorias/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public Subcategorias Get(int id) => db.Subcategorias.Find(id);
 
-        // POST api/Boletas
+        // POST api/Subcategorias
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(Subcategorias sync)
         {
-            db.Boletas.Add(sync);
+            db.Subcategorias.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/Subcategorias/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] Subcategorias newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.Subcategorias.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/Subcategorias/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.Subcategorias.Remove(db.Subcategorias.Find(id));
             db.SaveChanges();
         }
     }

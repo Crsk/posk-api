@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class PedidosPreparacionesController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/PedidosPreparaciones
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<PedidosPreparaciones> Get() => db.PedidosPreparaciones.ToList();
 
-        // GET api/Boletas/5
+        // GET api/PedidosPreparaciones/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public PedidosPreparaciones Get(int id) => db.PedidosPreparaciones.Find(id);
 
-        // POST api/Boletas
+        // POST api/PedidosPreparaciones
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(PedidosPreparaciones sync)
         {
-            db.Boletas.Add(sync);
+            db.PedidosPreparaciones.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/PedidosPreparaciones/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] PedidosPreparaciones newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.PedidosPreparaciones.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/PedidosPreparaciones/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.PedidosPreparaciones.Remove(db.PedidosPreparaciones.Find(id));
             db.SaveChanges();
         }
     }

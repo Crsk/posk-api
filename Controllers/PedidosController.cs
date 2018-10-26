@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -11,42 +11,42 @@ namespace PoskApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BoletasController : ControllerBase
+    public class PedidosController : ControllerBase
     {
         private PoskContext db { get; set; } = new PoskContext();
 
-        // GET api/Boletas
+        // GET api/Pedidos
         [HttpGet]
-        public List<Boletas> Get() => db.Boletas.ToList();
+        public List<Pedidos> Get() => db.Pedidos.ToList();
 
-        // GET api/Boletas/5
+        // GET api/Pedidos/5
         [HttpGet("{id}")]
-        public Boletas Get(int id) => db.Boletas.Find(id);
+        public Pedidos Get(int id) => db.Pedidos.Find(id);
 
-        // POST api/Boletas
+        // POST api/Pedidos
         [HttpPost]
-        public void Post(Boletas sync)
+        public void Post(Pedidos sync)
         {
-            db.Boletas.Add(sync);
+            db.Pedidos.Add(sync);
             db.SaveChanges();
         }
 
-        // PUT api/Boletas/5
+        // PUT api/Pedidos/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] Boletas newObj)
+        public void Put(int id, [FromBody] Pedidos newObj)
         {
-            var oldObj = db.Boletas.Find(id);
+            var oldObj = db.Pedidos.Find(id);
             if (oldObj == null) return;
             newObj.Id = oldObj.Id;
             db.Entry(oldObj).CurrentValues.SetValues(newObj);
             db.SaveChanges();
         }
 
-        // DELETE api/Boletas/5
+        // DELETE api/Pedidos/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            db.Boletas.Remove(db.Boletas.Find(id));
+            db.Pedidos.Remove(db.Pedidos.Find(id));
             db.SaveChanges();
         }
     }
