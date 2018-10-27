@@ -85,7 +85,7 @@ namespace PoskApi.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseMySql($"Server=localhost;Database=posk_db;User=root;Pwd={Credentials.DB_PASSWORD}");
+                optionsBuilder.UseMySql($"Server=localhost;Database=posk_db;User=root;Pwd={Credentials.DB_PASSWORD};TreatTinyAsBoolean=false");
             }
         }
 
